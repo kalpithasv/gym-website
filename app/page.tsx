@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import MembershipSection from '@/components/MembershipSection'
 import FeaturesSection from '@/components/FeaturesSection'
 import WellnessHub from '@/components/WellnessHub'
+import GallerySection from '@/components/GallerySection'
 import AppDownload from '@/components/AppDownload'
 import Footer from '@/components/Footer'
 
@@ -14,6 +15,7 @@ export default function Home() {
       <MembershipSection />
       <FeaturesSection />
       <WellnessHub />
+      <GallerySection />
       <AppDownload />
       <Footer />
     </main>

@@ -5,10 +5,10 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Nexus Gym - One membership for all your fitness needs',
+  title: 'Nexu Fitness Studio - One membership for all your fitness needs',
   description: 'A fitness movement that is worth breaking a sweat for. Unlimited access to group classes, all gyms and at-home workouts in Tirupur.',
   keywords: 'fitness, gym, workout, nexus pass, group classes, at-home workouts, tirupur, tamil nadu',
-  authors: [{ name: 'Nexus Gym' }],
+  authors: [{ name: 'Nexu Fitness Studio' }],
 }
 
 export const viewport = {

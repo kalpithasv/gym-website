@@ -1,10 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, MapPin, Bell, ShoppingCart, User } from 'lucide-react'
+import { Menu, X, MapPin, Bell, ShoppingCart } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showLaunchingSoon, setShowLaunchingSoon] = useState(false)
 
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
@@ -13,11 +15,23 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cult-black to-cult-yellow rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xs sm:text-sm">N</span>
-                </div>
-                <span className="text-lg sm:text-xl md:text-2xl font-bold text-cult-black">NEXUS</span>
+              {/* Mobile Logo */}
+              <div className="md:hidden relative h-8 w-8">
+                <Image
+                  src="/logo.png"
+                  alt="Nexu Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              {/* Desktop Logo */}
+              <div className="hidden md:block relative h-10 w-40">
+                <Image
+                  src="/logo-full.png"
+                  alt="Nexu Fitness"
+                  fill
+                  className="object-contain object-left"
+                />
               </div>
             </div>
           </div>
@@ -25,35 +39,40 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#" className="text-cult-black hover:text-cult-yellow px-3 py-2 text-sm font-medium">
-                FITNESS
+              <a href="#membership" className="text-cult-black hover:text-cult-yellow px-3 py-2 text-sm font-medium">
+                SUBSCRIPTION
               </a>
-              <a href="#" className="text-cult-black hover:text-cult-yellow px-3 py-2 text-sm font-medium">
-                SPORTS
-              </a>
-              <a href="#" className="text-cult-black hover:text-cult-yellow px-3 py-2 text-sm font-medium">
-                STORE
+              <a href="#wellness" className="text-cult-black hover:text-cult-yellow px-3 py-2 text-sm font-medium">
+                WELLNESS HUB
               </a>
             </div>
           </div>
 
           {/* Right side items */}
           <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
-            <div className="flex items-center space-x-1 lg:space-x-2 text-gray-600">
+            <a 
+              href="https://maps.google.com/?q=Nexu+Fitness+Studio+Tirupur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-1 lg:space-x-2 text-gray-600 hover:text-cult-yellow transition-colors"
+            >
               <MapPin className="w-3 h-3 lg:w-4 lg:h-4" />
               <span className="text-xs lg:text-sm">TIRUPUR</span>
-            </div>
-            <button className="bg-cult-yellow text-cult-black px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium hover:bg-cult-dark-yellow transition-colors">
+            </a>
+            <button 
+              onClick={() => setShowLaunchingSoon(true)}
+              className="bg-cult-yellow text-cult-black px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium hover:bg-cult-dark-yellow transition-colors"
+            >
               GET APP
             </button>
             <button className="p-1.5 lg:p-2 text-gray-600 hover:text-gray-900">
               <Bell className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
-            <button className="p-1.5 lg:p-2 text-gray-600 hover:text-gray-900">
+            <button 
+              onClick={() => setShowLaunchingSoon(true)}
+              className="p-1.5 lg:p-2 text-gray-600 hover:text-gray-900"
+            >
               <ShoppingCart className="w-4 h-4 lg:w-5 lg:h-5" />
-            </button>
-            <button className="p-1.5 lg:p-2 text-gray-600 hover:text-gray-900">
-              <User className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
           </div>
 
@@ -73,21 +92,42 @@ export default function Navigation() {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-            <a href="#" className="text-cult-black hover:text-cult-yellow block px-3 py-2 text-base font-medium">
-              FITNESS
+            <a href="#membership" className="text-cult-black hover:text-cult-yellow block px-3 py-2 text-base font-medium">
+              SUBSCRIPTION
             </a>
-            <a href="#" className="text-cult-black hover:text-cult-yellow block px-3 py-2 text-base font-medium">
-              SPORTS
+            <a href="#wellness" className="text-cult-black hover:text-cult-yellow block px-3 py-2 text-base font-medium">
+              WELLNESS HUB
             </a>
-            <a href="#" className="text-cult-black hover:text-cult-yellow block px-3 py-2 text-base font-medium">
-              STORE
-            </a>
-            <div className="flex items-center space-x-2 text-gray-600 px-3 py-2">
+            <a 
+              href="https://maps.google.com/?q=Nexu+Fitness+Studio+Tirupur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-600 px-3 py-2 hover:text-cult-yellow transition-colors"
+            >
               <MapPin className="w-4 h-4" />
               <span className="text-sm">TIRUPUR</span>
-            </div>
-            <button className="bg-cult-yellow text-cult-black px-4 py-2 rounded-full text-sm font-medium hover:bg-cult-dark-yellow transition-colors mx-3">
+            </a>
+            <button 
+              onClick={() => setShowLaunchingSoon(true)}
+              className="bg-cult-yellow text-cult-black px-4 py-2 rounded-full text-sm font-medium hover:bg-cult-dark-yellow transition-colors mx-3"
+            >
               GET APP
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Launching Soon Modal */}
+      {showLaunchingSoon && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-8 text-center max-w-sm mx-4">
+            <h3 className="text-2xl font-bold text-cult-black mb-4">Coming Soon</h3>
+            <p className="text-gray-600 mb-6">This feature is launching soon!</p>
+            <button
+              onClick={() => setShowLaunchingSoon(false)}
+              className="bg-cult-yellow text-cult-black px-6 py-2 rounded-full font-semibold hover:bg-cult-dark-yellow transition-colors"
+            >
+              OK
             </button>
           </div>
         </div>

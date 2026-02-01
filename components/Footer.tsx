@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react'
+import Image from 'next/image'
 
 const footerSections = [
   {
@@ -66,14 +67,18 @@ export default function Footer() {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <div className="flex items-center space-x-2 mb-4 sm:mb-6">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cult-black to-cult-yellow rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xs sm:text-sm">N</span>
+            <div className="mb-4 sm:mb-6">
+              <div className="relative h-16 w-56 sm:h-20 sm:w-72">
+                <Image
+                  src="/logo-full.png"
+                  alt="Nexu Fitness Studio"
+                  fill
+                  className="object-contain object-left"
+                />
               </div>
-              <span className="text-xl sm:text-2xl font-bold">NEXUS</span>
             </div>
             <p className="text-gray-400 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-              At Nexus Gym, we make group workouts fun, daily food healthy & tasty, 
+              At Nexu Fitness Studio, we make group workouts fun, daily food healthy & tasty, 
               mental fitness easy with yoga & meditation, and medical & lifestyle care hassle-free.
             </p>
             <div className="text-xl sm:text-2xl font-bold text-cult-yellow mb-4">
@@ -84,7 +89,7 @@ export default function Footer() {
             <div className="space-y-2 text-xs sm:text-sm text-gray-400">
               <div className="flex items-center space-x-2">
                 <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span>support@nexusgym.com</span>
+                <span>support@nexufitness.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -155,7 +160,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
             <div className="text-xs sm:text-sm text-gray-400">
-              © 2024 Nexus Gym. All rights reserved.
+              © 2024 Nexu Fitness Studio. All rights reserved.
             </div>
             
             {/* Social Links */}

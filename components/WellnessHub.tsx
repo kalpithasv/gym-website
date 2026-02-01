@@ -48,11 +48,12 @@ const wellnessBackgroundImages = [
 
 export default function WellnessHub() {
   return (
-    <BackgroundTransition 
-      images={wellnessBackgroundImages}
-      interval={7000}
-      className="py-20"
-    >
+    <div id="wellness">
+      <BackgroundTransition 
+        images={wellnessBackgroundImages}
+        interval={7000}
+        className="py-20"
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -205,6 +206,7 @@ export default function WellnessHub() {
           </div>
         </motion.div>
       </div>
-    </BackgroundTransition>
+      </BackgroundTransition>
+    </div>
   )
 }
