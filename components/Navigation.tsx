@@ -91,41 +91,54 @@ export default function Navigation() {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-            <a href="#membership" className="text-cult-black hover:text-cult-yellow block px-3 py-2 text-base font-medium">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t shadow-lg">
+            <a 
+              href="#membership" 
+              onClick={() => setIsMenuOpen(false)}
+              className="text-cult-black hover:text-cult-yellow block px-3 py-2.5 text-base font-medium transition-colors active:bg-gray-100 rounded-lg"
+            >
               SUBSCRIPTION
             </a>
-            <a href="#wellness" className="text-cult-black hover:text-cult-yellow block px-3 py-2 text-base font-medium">
+            <a 
+              href="#wellness" 
+              onClick={() => setIsMenuOpen(false)}
+              className="text-cult-black hover:text-cult-yellow block px-3 py-2.5 text-base font-medium transition-colors active:bg-gray-100 rounded-lg"
+            >
               WELLNESS HUB
             </a>
             <a 
               href="https://maps.google.com/?q=Nexu+Fitness+Studio+Tirupur"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-600 px-3 py-2 hover:text-cult-yellow transition-colors"
+              className="flex items-center space-x-2 text-gray-600 px-3 py-2.5 hover:text-cult-yellow transition-colors active:bg-gray-100 rounded-lg"
             >
               <MapPin className="w-4 h-4" />
               <span className="text-sm">TIRUPUR</span>
             </a>
-            <button 
-              onClick={() => setShowLaunchingSoon(true)}
-              className="bg-cult-yellow text-cult-black px-4 py-2 rounded-full text-sm font-medium hover:bg-cult-dark-yellow transition-colors mx-3"
-            >
-              GET APP
-            </button>
+            <div className="px-3 pt-2">
+              <button 
+                onClick={() => {
+                  setShowLaunchingSoon(true)
+                  setIsMenuOpen(false)
+                }}
+                className="w-full bg-cult-yellow text-cult-black px-4 py-2.5 rounded-full text-sm font-medium hover:bg-cult-dark-yellow active:bg-cult-dark-yellow transition-colors touch-manipulation"
+              >
+                GET APP
+              </button>
+            </div>
           </div>
         </div>
       )}
 
       {/* Launching Soon Modal */}
       {showLaunchingSoon && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 text-center max-w-sm mx-4">
-            <h3 className="text-2xl font-bold text-cult-black mb-4">Coming Soon</h3>
-            <p className="text-gray-600 mb-6">This feature is launching soon!</p>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 text-center max-w-sm w-full mx-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-cult-black mb-3 sm:mb-4">Coming Soon</h3>
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">This feature is launching soon!</p>
             <button
               onClick={() => setShowLaunchingSoon(false)}
-              className="bg-cult-yellow text-cult-black px-6 py-2 rounded-full font-semibold hover:bg-cult-dark-yellow transition-colors"
+              className="bg-cult-yellow text-cult-black px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-cult-dark-yellow active:bg-cult-dark-yellow transition-colors touch-manipulation"
             >
               OK
             </button>

@@ -32,19 +32,19 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/30 z-10" />
 
       {/* CONTENT */}
-      <div className="relative z-20 w-full max-w-4xl mx-auto px-4 text-white flex flex-col items-center">
+      <div className="relative z-20 w-full max-w-4xl mx-auto px-4 sm:px-6 text-white flex flex-col items-center">
         
         {/* TEXT GROUP */}
-        <div className="flex flex-col items-center text-center pt-24 sm:pt-0">
+        <div className="flex flex-col items-center text-center pt-20 sm:pt-0">
           <motion.h1
-            className="text-4xl sm:text-6xl md:text-6xl lg:text-7xl font-bold leading-tight"
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
             we-are-nexu
           </motion.h1>
 
-          <p className="mt-24 text-sm sm:text-base font-semibold opacity-90">
+          <p className="mt-16 sm:mt-20 md:mt-24 text-base sm:text-lg md:text-xl font-semibold opacity-90 px-4">
             Transform Your Body, Transform Your Life
           </p>
         </div>
@@ -52,18 +52,18 @@ export default function HeroSection() {
         {/* CTA BUTTON (pushed down like desktop) */}
         <a
           href="#membership"
-          className="mt-24 sm:mt-16 inline-block bg-cult-yellow hover:bg-cult-dark-yellow text-cult-black px-8 py-4 rounded-full text-lg font-semibold transition transform hover:scale-105"
+          className="mt-16 sm:mt-20 md:mt-24 inline-block bg-cult-yellow hover:bg-cult-dark-yellow text-cult-black px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition transform hover:scale-105 active:scale-95 touch-manipulation"
         >
           EXPLORE NEXUS PASS
         </a>
 
         {/* Arrow BELOW button */}
         <motion.div
-          className="mt-12"
+          className="mt-8 sm:mt-12"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <ChevronDown className="w-8 h-8 text-cult-yellow" />
+          <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8 text-cult-yellow" />
         </motion.div>
       </div>
     </section>

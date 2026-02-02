@@ -120,18 +120,18 @@ export default function MembershipSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12 px-4"
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-2 h-12 bg-cult-yellow rounded-full"></div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-cult-black">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-4">
+            <div className="hidden sm:block w-2 h-12 bg-cult-yellow rounded-full"></div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cult-black">
               FEES STRUCTURE
             </h2>
-            <div className="hidden sm:block text-cult-black text-2xl font-bold">
+            <div className="hidden lg:block text-cult-black text-xl lg:text-2xl font-bold">
               NEXU <span className="text-cult-yellow">FITNESS STUDIO</span>
             </div>
           </div>
-          <p className="text-cult-yellow text-lg sm:text-xl font-semibold mt-6">
+          <p className="text-cult-yellow text-base sm:text-lg md:text-xl font-semibold mt-4 sm:mt-6 px-2">
             "If you want better results, make better choices."
           </p>
         </motion.div>
@@ -142,16 +142,16 @@ export default function MembershipSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4"
         >
           {['1 MONTH', '3 MONTH', '6 MONTH', '1 YEAR'].map((duration) => (
             <button
               key={duration}
               onClick={() => setSelectedDuration(duration)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 border-2 ${
+              className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 border-2 touch-manipulation ${
                 selectedDuration === duration
-                  ? 'bg-cult-yellow text-cult-black border-cult-yellow'
-                  : 'border-cult-yellow text-cult-yellow hover:bg-cult-yellow/10'
+                  ? 'bg-cult-yellow text-cult-black border-cult-yellow shadow-lg'
+                  : 'border-cult-yellow text-cult-yellow hover:bg-cult-yellow/10 active:bg-cult-yellow/20'
               }`}
             >
               {duration}
@@ -160,7 +160,7 @@ export default function MembershipSection() {
         </motion.div>
 
         {/* Membership Plans Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 px-4">
           {membershipPlans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -231,7 +231,7 @@ export default function MembershipSection() {
                 </ul>
 
                 <motion.button 
-                  className="w-full bg-cult-yellow text-cult-black py-3 rounded-lg font-bold hover:bg-cult-dark-yellow transition-colors"
+                  className="w-full bg-cult-yellow text-cult-black py-3 sm:py-3.5 rounded-lg text-sm sm:text-base font-bold hover:bg-cult-dark-yellow transition-colors touch-manipulation"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -248,28 +248,116 @@ export default function MembershipSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
+          className="px-4"
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-center mb-6 sm:mb-8">
             Additional Services
           </h3>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {additionalServices.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className={`bg-gradient-to-br ${service.color} rounded-xl p-6 text-cult-black shadow-lg hover:shadow-xl transition-all duration-300`}
-              >
-                <h4 className="text-lg font-bold mb-2">{service.title}</h4>
-                <p className="text-sm opacity-90 mb-4">{service.description}</p>
-                <div className="text-3xl font-bold mb-1">₹{service.price}</div>
-                <div className="text-sm font-semibold">{service.duration}</div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {additionalServices.map((service, index) => {
+              const isYellow = index % 2 === 0;
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  viewport={{ once: true }}
+                  className="group cursor-pointer"
+                >
+                  <motion.div 
+                    className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full"
+                    whileHover={{ 
+                      y: -12,
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    {/* Corner accent */}
+                    <motion.div 
+                      className={`absolute top-0 left-0 w-20 h-20 ${isYellow ? 'bg-cult-yellow' : 'bg-cult-black'} rounded-br-[60px]`}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+                    />
+
+                    {/* Side stripe */}
+                    <div className={`absolute right-0 top-0 bottom-0 w-2 ${isYellow ? 'bg-cult-yellow' : 'bg-cult-black'}`} />
+
+                    {/* Content */}
+                    <div className="relative p-6">
+                      {/* Title section */}
+                      <motion.div 
+                        className="mb-4 pt-6"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
+                      >
+                        <h4 className={`text-lg font-extrabold ${service.title === 'WESTERN DANCE (KIDS)' || service.title === 'ZUMBA' ? 'text-cult-yellow' : 'text-cult-black'} mb-2 tracking-tight leading-tight min-h-[56px] flex items-center`}>
+                          {service.title}
+                        </h4>
+                        <p className="text-sm text-gray-600">{service.description}</p>
+                      </motion.div>
+
+                      {/* Divider with dots */}
+                      <div className="flex items-center gap-1 my-4">
+                        <div className={`w-2 h-2 rounded-full ${isYellow ? 'bg-cult-yellow' : 'bg-cult-black'}`} />
+                        <div className={`flex-1 h-px ${isYellow ? 'bg-cult-yellow' : 'bg-cult-black'} opacity-30`} />
+                        <div className={`w-2 h-2 rounded-full ${isYellow ? 'bg-cult-yellow' : 'bg-cult-black'}`} />
+                      </div>
+
+                      {/* Price section */}
+                      <motion.div 
+                        className="mt-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 + index * 0.1, duration: 0.6 }}
+                      >
+                        <div className="flex items-end justify-between">
+                          <div>
+                            <div className={`text-3xl font-black ${isYellow ? 'text-cult-black' : 'text-cult-black'} mb-1`}>
+                              ₹{service.price}
+                            </div>
+                            <div className={`text-sm font-semibold ${isYellow ? 'text-cult-yellow' : 'text-cult-black'} uppercase tracking-wide`}>
+                              {service.duration}
+                            </div>
+                          </div>
+                          
+                          {/* Action indicator */}
+                          <motion.div 
+                            className={`w-10 h-10 rounded-full ${isYellow ? 'bg-cult-yellow' : 'bg-cult-black'} flex items-center justify-center`}
+                            whileHover={{ 
+                              scale: 1.2,
+                              rotate: 90,
+                              transition: { duration: 0.3 }
+                            }}
+                          >
+                            <svg 
+                              className={`w-5 h-5 ${isYellow ? 'text-cult-black' : 'text-cult-yellow'}`} 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+
+                      {/* Bottom highlight bar */}
+                      <motion.div 
+                        className={`mt-6 h-1.5 ${isYellow ? 'bg-cult-yellow' : 'bg-cult-black'} rounded-full`}
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        transition={{ delay: 0.9 + index * 0.1, duration: 0.8 }}
+                        viewport={{ once: true }}
+                        style={{ transformOrigin: 'left' }}
+                      />
+                    </div>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -279,9 +367,9 @@ export default function MembershipSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16 px-4"
         >
-          <button className="bg-cult-yellow text-cult-black px-8 py-4 rounded-full text-lg font-bold hover:bg-cult-dark-yellow transition-all duration-300 transform hover:scale-105">
+          <button className="bg-cult-yellow text-cult-black px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:bg-cult-dark-yellow transition-all duration-300 transform hover:scale-105 active:scale-95 touch-manipulation w-full sm:w-auto">
             EXPLORE ALL PLANS
           </button>
         </motion.div>
@@ -290,3 +378,4 @@ export default function MembershipSection() {
     </div>
   )
 }
+  

@@ -145,9 +145,9 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-3 sm:px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cult-yellow focus:border-transparent text-sm"
+                className="flex-1 px-3 sm:px-4 py-2.5 sm:py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cult-yellow focus:border-transparent text-sm sm:text-base"
               />
-              <button className="bg-cult-yellow text-cult-black px-4 sm:px-6 py-2 rounded-lg hover:bg-cult-dark-yellow transition-colors duration-300 text-sm font-semibold">
+              <button className="bg-cult-yellow text-cult-black px-4 sm:px-6 py-2.5 sm:py-2 rounded-lg hover:bg-cult-dark-yellow active:bg-cult-dark-yellow transition-colors duration-300 text-sm sm:text-base font-semibold touch-manipulation">
                 Subscribe
               </button>
             </div>

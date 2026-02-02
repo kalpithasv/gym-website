@@ -57,12 +57,12 @@ export default function GallerySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12 px-4"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-cult-black mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-cult-black mb-3 sm:mb-4">
             Experience Nexu Fitness Studio
           </h2>
-          <p className="text-lg sm:text-xl text-gray-700">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 px-2">
             Take a visual tour through our world-class facilities
           </p>
         </motion.div>
@@ -73,7 +73,7 @@ export default function GallerySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4"
         >
           {galleryCategories.map((category, index) => (
             <motion.button
@@ -81,10 +81,10 @@ export default function GallerySection() {
               onClick={() => setSelectedCategory(index)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+              className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 touch-manipulation ${
                 selectedCategory === index
                   ? 'bg-cult-yellow text-cult-black shadow-lg'
-                  : 'bg-white text-cult-black hover:bg-gray-50 shadow-md'
+                  : 'bg-white text-cult-black hover:bg-gray-50 active:bg-gray-100 shadow-md'
               }`}
             >
               {category.title}
@@ -98,10 +98,10 @@ export default function GallerySection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="space-y-4"
+          className="space-y-3 sm:space-y-4 px-4"
         >
           {/* Top Row - Large Left + Two Small Right */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
             {/* Large Featured Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -111,7 +111,7 @@ export default function GallerySection() {
               onMouseEnter={() => setHoveredImage(0)}
               onMouseLeave={() => setHoveredImage(null)}
             >
-              <div className="relative h-72 sm:h-96 lg:h-[500px] bg-gray-300">
+              <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] bg-gray-300">
                 {galleryCategories[selectedCategory].items[0].type === 'video' ? (
                   <video
                     key={`video-0-${selectedCategory}`}
@@ -145,12 +145,12 @@ export default function GallerySection() {
                     opacity: hoveredImage === 0 ? 1 : 0, 
                     y: hoveredImage === 0 ? 0 : 20 
                   }}
-                  className="absolute bottom-6 left-6 text-white"
+                  className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white"
                 >
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-2">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">
                     {galleryCategories[selectedCategory].title}
                   </h3>
-                  <p className="text-sm sm:text-base opacity-90">
+                  <p className="text-xs sm:text-sm md:text-base opacity-90">
                     Explore our premium facilities
                   </p>
                 </motion.div>
@@ -158,7 +158,7 @@ export default function GallerySection() {
             </motion.div>
 
             {/* Right Column - Two Stacked Images */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -167,7 +167,7 @@ export default function GallerySection() {
                 onMouseEnter={() => setHoveredImage(1)}
                 onMouseLeave={() => setHoveredImage(null)}
               >
-                <div className="relative h-36 sm:h-48 lg:h-60 bg-gray-300">
+                <div className="relative h-32 sm:h-40 md:h-48 lg:h-60 bg-gray-300">
                   {galleryCategories[selectedCategory].items[1].type === 'video' ? (
                     <video
                       key={`video-1-${selectedCategory}`}
@@ -208,7 +208,7 @@ export default function GallerySection() {
                 onMouseEnter={() => setHoveredImage(2)}
                 onMouseLeave={() => setHoveredImage(null)}
               >
-                <div className="relative h-36 sm:h-48 lg:h-60 bg-gray-300">
+                <div className="relative h-32 sm:h-40 md:h-48 lg:h-60 bg-gray-300">
                   {galleryCategories[selectedCategory].items[2].type === 'video' ? (
                     <video
                       key={`video-2-${selectedCategory}`}
@@ -252,7 +252,7 @@ export default function GallerySection() {
             onMouseEnter={() => setHoveredImage(3)}
             onMouseLeave={() => setHoveredImage(null)}
           >
-            <div className="relative h-56 sm:h-72 lg:h-80 bg-gray-300">
+            <div className="relative h-48 sm:h-64 md:h-72 lg:h-80 bg-gray-300">
               {galleryCategories[selectedCategory].items[3].type === 'video' ? (
                 <video
                   key={`video-3-${selectedCategory}`}
@@ -292,11 +292,11 @@ export default function GallerySection() {
                 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="text-center text-white">
-                  <h3 className="text-3xl sm:text-4xl font-bold mb-4">
+                <div className="text-center text-white px-4">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
                     Join The Movement
                   </h3>
-                  <button className="bg-cult-yellow text-cult-black px-8 py-3 rounded-full font-bold hover:bg-cult-dark-yellow transition-all transform hover:scale-105">
+                  <button className="bg-cult-yellow text-cult-black px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold hover:bg-cult-dark-yellow transition-all transform hover:scale-105 active:scale-95 touch-manipulation">
                     Book a Tour
                   </button>
                 </div>
@@ -311,7 +311,7 @@ export default function GallerySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-12 sm:mt-16 px-4"
         >
           {[
             { number: '500+', label: 'Premium Equipment' },
@@ -325,12 +325,12 @@ export default function GallerySection() {
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="text-center bg-white rounded-xl p-6 shadow-lg"
+              className="text-center bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg"
             >
-              <div className="text-3xl sm:text-4xl font-bold text-cult-yellow mb-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-cult-yellow mb-1 sm:mb-2">
                 {stat.number}
               </div>
-              <div className="text-sm sm:text-base text-gray-700 font-semibold">
+              <div className="text-xs sm:text-sm md:text-base text-gray-700 font-semibold">
                 {stat.label}
               </div>
             </motion.div>

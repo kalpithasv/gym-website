@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '475px',
+      },
       colors: {
         'cult-yellow': '#FFD700',
         'cult-dark-yellow': '#FFA500',
