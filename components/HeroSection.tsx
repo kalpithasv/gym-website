@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown, Play } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
-const fitnessVideo = '/hero-video.mp4'
+const fitnessVideo = 'https://res.cloudinary.com/dqvxkbvov/video/upload/hero-video_vgp61m.mp4'
 
 export default function HeroSection() {
   const { scrollY } = useScroll()
