@@ -39,6 +39,31 @@ export default function GallerySection() {
   const [selectedCategory, setSelectedCategory] = useState(0) // Default to Strength Training
   const [hoveredImage, setHoveredImage] = useState<number | null>(null)
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+  const [videosEnabled, setVideosEnabled] = useState(false)
+
+  // Enable videos on first user interaction
+  useEffect(() => {
+    const enableVideos = () => {
+      setVideosEnabled(true)
+      // Try to play all videos
+      videoRefs.current.forEach((video) => {
+        if (video) {
+          video.play().catch(() => {})
+        }
+      })
+    }
+
+    // Listen for any user interaction
+    document.addEventListener('click', enableVideos, { once: true })
+    document.addEventListener('touchstart', enableVideos, { once: true })
+    document.addEventListener('scroll', enableVideos, { once: true })
+
+    return () => {
+      document.removeEventListener('click', enableVideos)
+      document.removeEventListener('touchstart', enableVideos)
+      document.removeEventListener('scroll', enableVideos)
+    }
+  }, [])
 
   // Auto-play videos when they come into view
   useEffect(() => {
@@ -49,7 +74,7 @@ export default function GallerySection() {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting) {
+              if (entry.isIntersecting && videosEnabled) {
                 video.play().catch((error) => {
                   console.log('Autoplay prevented:', error)
                 })
@@ -58,7 +83,7 @@ export default function GallerySection() {
               }
             })
           },
-          { threshold: 0.5 } // Play when 50% of video is visible
+          { threshold: 0.3 } // Play when 30% of video is visible
         )
 
         observer.observe(video)
@@ -69,7 +94,7 @@ export default function GallerySection() {
     return () => {
       observers.forEach((observer) => observer.disconnect())
     }
-  }, [selectedCategory])
+  }, [selectedCategory, videosEnabled])
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100">

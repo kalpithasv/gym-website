@@ -1,8 +1,8 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { ChevronDown, Play } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 const fitnessVideo = '/hero-video.mp4'
 
@@ -11,14 +11,35 @@ export default function HeroSection() {
   const y = useTransform(scrollY, [0, 300], [0, -150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0.3])
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoPlaying, setVideoPlaying] = useState(false)
+  const [showPlayButton, setShowPlayButton] = useState(true)
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.log('Autoplay prevented:', error)
-      })
+      // Try to autoplay
+      const playPromise = videoRef.current.play()
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setVideoPlaying(true)
+            setShowPlayButton(false)
+          })
+          .catch((error) => {
+            console.log('Autoplay prevented, showing play button:', error)
+            setShowPlayButton(true)
+          })
+      }
     }
   }, [])
+
+  const handlePlayClick = () => {
+    if (videoRef.current) {
+      videoRef.current.play()
+      setVideoPlaying(true)
+      setShowPlayButton(false)
+    }
+  }
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -38,6 +59,24 @@ export default function HeroSection() {
             <source src={fitnessVideo} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-cult-black/60 to-transparent" />
+          
+          {/* Play Button Overlay - Shows if autoplay is blocked */}
+          {showPlayButton && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute inset-0 flex items-center justify-center bg-black/40 z-10 cursor-pointer"
+              onClick={handlePlayClick}
+            >
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-cult-yellow text-cult-black p-6 rounded-full shadow-2xl"
+              >
+                <Play className="w-12 h-12" fill="currentColor" />
+              </motion.button>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 
