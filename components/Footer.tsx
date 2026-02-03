@@ -50,7 +50,7 @@ const footerSections = [
 const socialLinks = [
   { icon: <Facebook className="w-5 h-5" />, href: '#', label: 'Facebook' },
   { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter' },
-  { icon: <Instagram className="w-5 h-5" />, href: '#', label: 'Instagram' },
+  { icon: <Instagram className="w-5 h-5" />, href: 'https://www.instagram.com/nexufitness/', label: 'Instagram' },
 ]
 
 export default function Footer() {
@@ -184,6 +184,8 @@ export default function Footer() {
                 <a
                   key={index}
                   href={social.href}
+                  target={social.href !== '#' ? '_blank' : undefined}
+                  rel={social.href !== '#' ? 'noopener noreferrer' : undefined}
                   className="text-gray-400 hover:text-white transition-colors duration-300"
                   aria-label={social.label}
                 >
