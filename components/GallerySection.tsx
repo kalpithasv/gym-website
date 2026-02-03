@@ -4,24 +4,24 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 
-// Gallery categories with images and videos - Place your files in public/gallery/
+// Gallery categories with images and videos - Hosted on Cloudinary CDN
 const galleryCategories = [
   {
     title: 'Strength Training',
     items: [
       { src: '/gallery/1.jpg', type: 'image' },
-      { src: '/gallery/6.mp4', fallback: '/gallery/6.jpg', type: 'video' },
-      { src: '/gallery/3.mp4', fallback: '/gallery/3.jpg', type: 'video' },
-      { src: '/gallery/4.mp4', fallback: '/gallery/4.jpg', type: 'video' }
+      { src: 'https://res.cloudinary.com/dqvxkbvov/video/upload/6_ianmbl.mp4', type: 'video' },
+      { src: 'https://res.cloudinary.com/dqvxkbvov/video/upload/3_zko2qo.mp4', type: 'video' },
+      { src: 'https://res.cloudinary.com/dqvxkbvov/video/upload/4_gtijsf.mp4', type: 'video' }
     ]
   },
   {
     title: 'Cardio Zone',
     items: [
-      { src: '/gallery/8.mp4', fallback: '/gallery/8.jpg', type: 'video' },
-      { src: '/gallery/2.mp4', fallback: '/gallery/2.jpg', type: 'video' },
-      { src: '/gallery/7.mp4', fallback: '/gallery/7.jpg', type: 'video' },
-      { src: '/gallery/5.mp4', fallback: '/gallery/5.jpg', type: 'video' }
+      { src: 'https://res.cloudinary.com/dqvxkbvov/video/upload/8_kz5ew4.mp4', type: 'video' },
+      { src: 'https://res.cloudinary.com/dqvxkbvov/video/upload/2_fiuaoy.mp4', type: 'video' },
+      { src: 'https://res.cloudinary.com/dqvxkbvov/video/upload/7_gxdawo.mp4', type: 'video' },
+      { src: 'https://res.cloudinary.com/dqvxkbvov/video/upload/5_ig7gce.mp4', type: 'video' }
     ]
   },
   {
@@ -29,7 +29,7 @@ const galleryCategories = [
     items: [
       { src: '/gallery/9.jpeg', type: 'image' },
       { src: '/gallery/10.jpeg', type: 'image' },
-      { src: '/gallery/7.mp4', fallback: '/gallery/7.jpg', type: 'video' },
+      { src: 'https://res.cloudinary.com/dqvxkbvov/video/upload/7_gxdawo.mp4', type: 'video' },
       { src: '/gallery/12.jpeg', type: 'image' }
     ]
   }
