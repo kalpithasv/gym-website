@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 
 const fitnessVideo = '/hero-video.mp4'
 
@@ -9,6 +10,15 @@ export default function HeroSection() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 300], [0, -150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0.3])
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.log('Autoplay prevented:', error)
+      })
+    }
+  }, [])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -16,11 +26,14 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <motion.div className="absolute inset-0" style={{ y, opacity }}>
           <video
+            ref={videoRef}
             className="w-full h-full object-cover"
             autoPlay
             muted
             loop
             playsInline
+            preload="auto"
+            webkit-playsinline="true"
           >
             <source src={fitnessVideo} type="video/mp4" />
           </video>

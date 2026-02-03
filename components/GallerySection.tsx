@@ -143,6 +143,8 @@ export default function GallerySection() {
                     muted
                     loop
                     playsInline
+                    preload="auto"
+                    webkit-playsinline="true"
                     onError={(e) => console.error('Video 0 error:', e)}
                   >
                     <source src={galleryCategories[selectedCategory].items[0].src} type="video/mp4" />
@@ -198,6 +200,8 @@ export default function GallerySection() {
                       muted
                       loop
                       playsInline
+                      preload="auto"
+                      webkit-playsinline="true"
                       onError={(e) => console.error('Video 1 error:', e)}
                     >
                       <source src={galleryCategories[selectedCategory].items[1].src} type="video/mp4" />
@@ -238,6 +242,8 @@ export default function GallerySection() {
                       muted
                       loop
                       playsInline
+                      preload="auto"
+                      webkit-playsinline="true"
                       onError={(e) => console.error('Video 2 error:', e)}
                     >
                       <source src={galleryCategories[selectedCategory].items[2].src} type="video/mp4" />
@@ -281,6 +287,8 @@ export default function GallerySection() {
                   muted
                   loop
                   playsInline
+                  preload="auto"
+                  webkit-playsinline="true"
                   onError={(e) => console.error('Video 3 error:', e)}
                 >
                   <source src={galleryCategories[selectedCategory].items[3].src} type="video/mp4" />
