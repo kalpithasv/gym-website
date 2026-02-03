@@ -47,12 +47,12 @@ export default function AppDownload() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16 px-4"
+          className="text-center mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cult-black mb-3 sm:mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-cult-black mb-4">
             Online Personal Training
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-cult-black/80 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-cult-black/80 max-w-2xl mx-auto">
             Get personalized coaching from certified trainers with one-on-one video calls and custom workout videos
           </p>
         </motion.div>
@@ -63,12 +63,12 @@ export default function AppDownload() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 px-4"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
         >
           {[
-            { icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6" />, title: 'Book Trainer', desc: 'Choose your package & confirm booking' },
-            { icon: <Video className="w-5 h-5 sm:w-6 sm:h-6" />, title: 'Custom Videos', desc: 'Receive personalized workout programs' },
-            { icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" />, title: 'Direct Support', desc: 'Direct contact with coach via phone' }
+            { icon: <Phone className="w-6 h-6" />, title: 'Book Trainer', desc: 'Choose your package & confirm booking' },
+            { icon: <Video className="w-6 h-6" />, title: 'Custom Videos', desc: 'Receive personalized workout programs' },
+            { icon: <CheckCircle className="w-6 h-6" />, title: 'Direct Support', desc: 'Direct contact with coach via phone' }
           ].map((step, index) => (
             <motion.div
               key={index}
@@ -76,15 +76,15 @@ export default function AppDownload() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-xl p-5 sm:p-6 shadow-lg text-center"
+              className="bg-white rounded-xl p-6 shadow-lg text-center"
             >
               <div className="flex justify-center mb-3">
-                <div className="text-cult-yellow bg-cult-black/10 p-2.5 sm:p-3 rounded-full">
+                <div className="text-cult-yellow bg-cult-black/10 p-3 rounded-full">
                   {step.icon}
                 </div>
               </div>
-              <h3 className="text-base sm:text-lg font-bold text-cult-black mb-2">{step.title}</h3>
-              <p className="text-xs sm:text-sm text-gray-600">{step.desc}</p>
+              <h3 className="text-lg font-bold text-cult-black mb-2">{step.title}</h3>
+              <p className="text-sm text-gray-600">{step.desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -95,13 +95,12 @@ export default function AppDownload() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="px-4"
         >
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-cult-black text-center mb-8 sm:mb-12">
+          <h3 className="text-2xl sm:text-3xl font-bold text-cult-black text-center mb-12">
             Meet Our Trainers
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {trainers.map((trainer, index) => (
               <motion.div
                 key={index}
@@ -113,45 +112,45 @@ export default function AppDownload() {
                 className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300"
               >
                 {/* Header with Color */}
-                <div className={`h-24 sm:h-28 bg-gradient-to-r ${trainer.color} relative`}>
+                <div className={`h-28 bg-gradient-to-r ${trainer.color} relative`}>
                   <div className="absolute inset-0 opacity-80"></div>
-                  <div className="relative z-10 flex items-end h-full p-4 sm:p-5">
+                  <div className="relative z-10 flex items-end h-full p-4">
                     <div className="text-white">
-                      <h4 className="text-lg sm:text-xl font-bold">{trainer.name}</h4>
-                      <p className="text-xs sm:text-sm opacity-90">{trainer.specialty}</p>
+                      <h4 className="text-xl font-bold">{trainer.name}</h4>
+                      <p className="text-sm opacity-90">{trainer.specialty}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-5 sm:p-6">
-                  <div className="space-y-3 sm:space-y-4 mb-5 sm:mb-6">
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className="text-cult-yellow flex-shrink-0">
-                        <Users className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="p-6">
+                  <div className="space-y-4 mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="text-cult-yellow">
+                        <Users className="w-5 h-5" />
                       </div>
                       <div>
                         <p className="text-xs text-gray-500">Experience</p>
-                        <p className="font-semibold text-cult-black text-sm sm:text-base">{trainer.experience}</p>
+                        <p className="font-semibold text-cult-black">{trainer.experience}</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className="text-cult-yellow flex-shrink-0">
-                        <Video className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <div className="flex items-center gap-3">
+                      <div className="text-cult-yellow">
+                        <Video className="w-5 h-5" />
                       </div>
                       <div>
                         <p className="text-xs text-gray-500">Sessions Include</p>
-                        <p className="font-semibold text-cult-black text-xs sm:text-sm">{trainer.sessions}</p>
+                        <p className="font-semibold text-cult-black text-sm">{trainer.sessions}</p>
                       </div>
                     </div>
 
                     {trainer.phone && (
-                      <div className="border-t pt-3 sm:pt-4 mt-3 sm:mt-4">
+                      <div className="border-t pt-4 mt-4">
                         <p className="text-xs text-gray-500 mb-1">Contact</p>
                         <a 
                           href={`tel:${trainer.phone.replace(/\s/g, '')}`}
-                          className="flex items-center gap-2 text-cult-yellow text-sm sm:text-base font-bold hover:text-cult-dark-yellow transition-colors"
+                          className="flex items-center gap-2 text-cult-yellow font-bold hover:text-cult-dark-yellow transition-colors"
                         >
                           <Phone className="w-4 h-4" />
                           {trainer.phone}
@@ -163,7 +162,7 @@ export default function AppDownload() {
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-cult-yellow text-cult-black py-3 sm:py-3.5 rounded-lg text-sm sm:text-base font-bold hover:bg-cult-dark-yellow transition-colors touch-manipulation"
+                    className="w-full bg-cult-yellow text-cult-black py-3 rounded-lg font-bold hover:bg-cult-dark-yellow transition-colors"
                   >
                     Book Now
                   </motion.button>
@@ -179,12 +178,12 @@ export default function AppDownload() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 sm:mt-16 bg-white rounded-2xl p-5 sm:p-6 md:p-8 shadow-xl mx-4"
+          className="mt-16 bg-white rounded-2xl p-8 shadow-xl"
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-cult-black mb-6 sm:mb-8 text-center">
+          <h3 className="text-2xl font-bold text-cult-black mb-8 text-center">
             The Process
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 step: '1',
@@ -204,11 +203,11 @@ export default function AppDownload() {
             ].map((item, index) => (
               <div key={index} className="relative">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cult-yellow text-cult-black font-bold text-base sm:text-lg mb-3 sm:mb-4">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-cult-yellow text-cult-black font-bold text-lg mb-4">
                     {item.step}
                   </div>
-                  <h4 className="text-base sm:text-lg font-bold text-cult-black mb-2">{item.title}</h4>
-                  <p className="text-sm sm:text-base text-gray-600">{item.desc}</p>
+                  <h4 className="text-lg font-bold text-cult-black mb-2">{item.title}</h4>
+                  <p className="text-gray-600">{item.desc}</p>
                 </div>
                 {index < 2 && (
                   <div className="hidden md:block absolute top-6 -right-6 w-12 h-0.5 bg-cult-yellow"></div>
@@ -224,17 +223,17 @@ export default function AppDownload() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-12 sm:mt-16 px-4"
+          className="text-center mt-16"
         >
-          <p className="text-base sm:text-lg text-cult-black/80 mb-4 sm:mb-6">
+          <p className="text-lg text-cult-black/80 mb-6">
             Questions? Call our support team to learn more
           </p>
           <a 
-            href="tel:+919999999999"
-            className="inline-flex items-center gap-2 bg-cult-yellow text-cult-black px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-bold hover:bg-cult-dark-yellow transition-all transform hover:scale-105 active:scale-95 touch-manipulation"
+            href="tel:+918883222349"
+            className="inline-flex items-center gap-2 bg-cult-yellow text-cult-black px-8 py-4 rounded-full font-bold hover:bg-cult-dark-yellow transition-all transform hover:scale-105"
           >
-            <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-            +91 99999 99999
+            <Phone className="w-5 h-5" />
+            +91 88832 22349
           </a>
         </motion.div>
       </div>
