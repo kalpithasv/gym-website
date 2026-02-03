@@ -25,7 +25,7 @@ const trainers = [
   {
     name: 'Padmini Priya',
     specialty: 'Personal Training',
-    phone: undefined,
+    phone: '+91 9677347091',
     experience: '2 years (2023–2026)',
     sessions: 'Custom Video Programs',
     color: 'from-pink-500 to-rose-400'
@@ -160,13 +160,29 @@ export default function AppDownload() {
                     )}
                   </div>
 
-                  <motion.button 
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full bg-cult-yellow text-cult-black py-3 rounded-lg font-bold hover:bg-cult-dark-yellow transition-colors"
-                  >
-                    Book Now
-                  </motion.button>
+                  {trainer.phone ? (
+                    <a 
+                      href={`tel:${trainer.phone.replace(/\s/g, '')}`}
+                      className="block w-full"
+                    >
+                      <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full bg-cult-yellow text-cult-black py-3 rounded-lg font-bold hover:bg-cult-dark-yellow transition-colors"
+                      >
+                        Book Now
+                      </motion.button>
+                    </a>
+                  ) : (
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full bg-cult-yellow text-cult-black py-3 rounded-lg font-bold hover:bg-cult-dark-yellow transition-colors opacity-50 cursor-not-allowed"
+                      disabled
+                    >
+                      Contact Not Available
+                    </motion.button>
+                  )}
                 </div>
               </motion.div>
             ))}
