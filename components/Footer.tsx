@@ -39,17 +39,12 @@ const footerSections = [
     title: 'Connect',
     links: [
       'Instagram',
-      'Facebook',
-      'Twitter',
-      'YouTube',
-      'LinkedIn'
+      'YouTube'
     ]
   }
 ]
 
 const socialLinks = [
-  { icon: <Facebook className="w-5 h-5" />, href: '#', label: 'Facebook' },
-  { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter' },
   { icon: <Instagram className="w-5 h-5" />, href: 'https://www.instagram.com/nexufitness/', label: 'Instagram' },
 ]
 
