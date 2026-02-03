@@ -6,7 +6,7 @@ import BackgroundTransition from './BackgroundTransition'
 
 const features = [
   {
-    title: 'NEXUS TRANSFORM',
+    title: 'NEXU TRANSFORM',
     description: 'Get coached to lose weight for good',
     icon: <Dumbbell className="w-8 h-8" />,
     gradient: 'from-cult-black to-cult-yellow',
@@ -17,21 +17,21 @@ const features = [
     description: 'Making health easy, one day at a time',
     icon: <Heart className="w-8 h-8" />,
     gradient: 'from-cult-gray to-cult-white',
-    link: 'arrow'
+    link: 'healthy living'
   },
   {
     title: 'Workout Gear',
     description: 'Everything you need for your workout',
     icon: <ShoppingBag className="w-8 h-8" />,
     gradient: 'from-cult-yellow to-cult-white',
-    link: 'arrow'
+    link: 'workout essentials'
   },
   {
     title: 'Sugar.fit',
     description: 'Reverse Type 2 Diabetes and Prediabetes',
     icon: <Activity className="w-8 h-8" />,
     gradient: 'from-cult-dark to-cult-yellow',
-    link: 'arrow'
+    link: 'sugar free life'
   }
 ]
 

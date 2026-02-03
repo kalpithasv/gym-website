@@ -89,11 +89,16 @@ export default function Footer() {
             <div className="space-y-2 text-xs sm:text-sm text-gray-400">
               <div className="flex items-center space-x-2">
                 <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span>support@nexufitness.com</span>
+                <a
+                  href="mailto:nexufitnessstudio@gmail.com"
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  nexufitnessstudio@gmail.com
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span>+91 99999 99999</span>
+                <span>+91 8883222349</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -141,16 +146,26 @@ export default function Footer() {
             <p className="text-gray-400 mb-3 sm:mb-4 text-xs sm:text-sm">
               Subscribe to get updates on new features and offers.
             </p>
-            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+            <form
+              action="mailto:nexufitnessstudio@gmail.com"
+              method="post"
+              encType="text/plain"
+              className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2"
+            >
               <input
                 type="email"
+                name="email"
+                required
                 placeholder="Enter your email"
                 className="flex-1 px-3 sm:px-4 py-2.5 sm:py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cult-yellow focus:border-transparent text-sm sm:text-base"
               />
-              <button className="bg-cult-yellow text-cult-black px-4 sm:px-6 py-2.5 sm:py-2 rounded-lg hover:bg-cult-dark-yellow active:bg-cult-dark-yellow transition-colors duration-300 text-sm sm:text-base font-semibold touch-manipulation">
+              <button
+                type="submit"
+                className="bg-cult-yellow text-cult-black px-4 sm:px-6 py-2.5 sm:py-2 rounded-lg hover:bg-cult-dark-yellow active:bg-cult-dark-yellow transition-colors duration-300 text-sm sm:text-base font-semibold touch-manipulation"
+              >
                 Subscribe
               </button>
-            </div>
+            </form>
           </div>
         </motion.div>
       </div>

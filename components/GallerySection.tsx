@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 // Gallery categories with images and videos - Place your files in public/gallery/
 const galleryCategories = [
@@ -10,7 +10,7 @@ const galleryCategories = [
     title: 'Strength Training',
     items: [
       { src: '/gallery/1.jpg', type: 'image' },
-      { src: '/gallery/2.mp4', fallback: '/gallery/2.jpg', type: 'video' },
+      { src: '/gallery/6.mp4', fallback: '/gallery/6.jpg', type: 'video' },
       { src: '/gallery/3.mp4', fallback: '/gallery/3.jpg', type: 'video' },
       { src: '/gallery/4.mp4', fallback: '/gallery/4.jpg', type: 'video' }
     ]
@@ -19,7 +19,7 @@ const galleryCategories = [
     title: 'Cardio Zone',
     items: [
       { src: '/gallery/8.mp4', fallback: '/gallery/8.jpg', type: 'video' },
-      { src: '/gallery/6.mp4', fallback: '/gallery/6.jpg', type: 'video' },
+      { src: '/gallery/2.mp4', fallback: '/gallery/2.jpg', type: 'video' },
       { src: '/gallery/7.mp4', fallback: '/gallery/7.jpg', type: 'video' },
       { src: '/gallery/5.mp4', fallback: '/gallery/5.jpg', type: 'video' }
     ]
@@ -27,26 +27,49 @@ const galleryCategories = [
   {
     title: 'Group Classes',
     items: [
-      { src: '/gallery/9.jpg', type: 'image' },
-      { src: '/gallery/10.jpg', type: 'image' },
-      { src: '/gallery/11.mp4', fallback: '/gallery/11.jpg', type: 'video' },
-      { src: '/gallery/12.jpg', type: 'image' }
-    ]
-  },
-  {
-    title: 'Facilities',
-    items: [
-      { src: '/gallery/13.jpg', type: 'image' },
-      { src: '/gallery/14.jpg', type: 'image' },
-      { src: '/gallery/15.jpg', type: 'image' },
-      { src: '/gallery/16.mp4', fallback: '/gallery/16.jpg', type: 'video' }
+      { src: '/gallery/9.jpeg', type: 'image' },
+      { src: '/gallery/10.jpeg', type: 'image' },
+      { src: '/gallery/7.mp4', fallback: '/gallery/7.jpg', type: 'video' },
+      { src: '/gallery/12.jpeg', type: 'image' }
     ]
   }
 ]
 
 export default function GallerySection() {
-  const [selectedCategory, setSelectedCategory] = useState(3) // Default to Facilities
+  const [selectedCategory, setSelectedCategory] = useState(0) // Default to Strength Training
   const [hoveredImage, setHoveredImage] = useState<number | null>(null)
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+
+  // Auto-play videos when they come into view
+  useEffect(() => {
+    const observers: IntersectionObserver[] = []
+
+    videoRefs.current.forEach((video, index) => {
+      if (video) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                video.play().catch((error) => {
+                  console.log('Autoplay prevented:', error)
+                })
+              } else {
+                video.pause()
+              }
+            })
+          },
+          { threshold: 0.5 } // Play when 50% of video is visible
+        )
+
+        observer.observe(video)
+        observers.push(observer)
+      }
+    })
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect())
+    }
+  }, [selectedCategory])
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100">
@@ -114,13 +137,12 @@ export default function GallerySection() {
               <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] bg-gray-300">
                 {galleryCategories[selectedCategory].items[0].type === 'video' ? (
                   <video
+                    ref={(el) => { videoRefs.current[0] = el }}
                     key={`video-0-${selectedCategory}`}
                     className="w-full h-full object-cover"
-                    autoPlay
                     muted
                     loop
                     playsInline
-                    controls
                     onError={(e) => console.error('Video 0 error:', e)}
                   >
                     <source src={galleryCategories[selectedCategory].items[0].src} type="video/mp4" />
@@ -170,13 +192,12 @@ export default function GallerySection() {
                 <div className="relative h-32 sm:h-40 md:h-48 lg:h-60 bg-gray-300">
                   {galleryCategories[selectedCategory].items[1].type === 'video' ? (
                     <video
+                      ref={(el) => { videoRefs.current[1] = el }}
                       key={`video-1-${selectedCategory}`}
                       className="w-full h-full object-cover"
-                      autoPlay
                       muted
                       loop
                       playsInline
-                      controls
                       onError={(e) => console.error('Video 1 error:', e)}
                     >
                       <source src={galleryCategories[selectedCategory].items[1].src} type="video/mp4" />
@@ -211,13 +232,12 @@ export default function GallerySection() {
                 <div className="relative h-32 sm:h-40 md:h-48 lg:h-60 bg-gray-300">
                   {galleryCategories[selectedCategory].items[2].type === 'video' ? (
                     <video
+                      ref={(el) => { videoRefs.current[2] = el }}
                       key={`video-2-${selectedCategory}`}
                       className="w-full h-full object-cover"
-                      autoPlay
                       muted
                       loop
                       playsInline
-                      controls
                       onError={(e) => console.error('Video 2 error:', e)}
                     >
                       <source src={galleryCategories[selectedCategory].items[2].src} type="video/mp4" />
@@ -255,13 +275,12 @@ export default function GallerySection() {
             <div className="relative h-48 sm:h-64 md:h-72 lg:h-80 bg-gray-300">
               {galleryCategories[selectedCategory].items[3].type === 'video' ? (
                 <video
+                  ref={(el) => { videoRefs.current[3] = el }}
                   key={`video-3-${selectedCategory}`}
                   className="w-full h-full object-cover"
-                  autoPlay
                   muted
                   loop
                   playsInline
-                  controls
                   onError={(e) => console.error('Video 3 error:', e)}
                 >
                   <source src={galleryCategories[selectedCategory].items[3].src} type="video/mp4" />
