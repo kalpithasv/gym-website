@@ -34,12 +34,13 @@ const trainers = [
 
 export default function AppDownload() {
   return (
-    <BackgroundTransition 
-      images={backgroundImages}
-      interval={8000}
-      className="py-20"
-      overlay={false}
-    >
+    <div id="contact">
+      <BackgroundTransition 
+        images={backgroundImages}
+        interval={8000}
+        className="py-20"
+        overlay={false}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -238,5 +239,6 @@ export default function AppDownload() {
         </motion.div>
       </div>
     </BackgroundTransition>
+    </div>
   )
 }

@@ -45,6 +45,9 @@ export default function Navigation() {
               <a href="#wellness" className="text-cult-black hover:text-cult-yellow px-3 py-2 text-sm font-medium">
                 WELLNESS HUB
               </a>
+              <a href="#contact" className="text-cult-black hover:text-cult-yellow px-3 py-2 text-sm font-medium">
+                CONTACT
+              </a>
             </div>
           </div>
 
@@ -105,6 +108,13 @@ export default function Navigation() {
               className="text-cult-black hover:text-cult-yellow block px-3 py-2.5 text-base font-medium transition-colors active:bg-gray-100 rounded-lg"
             >
               WELLNESS HUB
+            </a>
+            <a 
+              href="#contact" 
+              onClick={() => setIsMenuOpen(false)}
+              className="text-cult-black hover:text-cult-yellow block px-3 py-2.5 text-base font-medium transition-colors active:bg-gray-100 rounded-lg"
+            >
+              CONTACT
             </a>
             <a 
               href="https://maps.google.com/?q=Nexu+Fitness+Studio+Tirupur"
